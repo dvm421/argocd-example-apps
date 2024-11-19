@@ -19,7 +19,7 @@ route:
   enabled: false
   ingressDomain: example.local
   host: guestbook
-
+  labels: {}
 ingress:
   enabled: false
   annotations: {}

@@ -3,6 +3,12 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ template "helm-guestbook.fullname" . }}-route
+  labels:
+    app: {{ template "helm-guestbook.name" . }}
+    chart: {{ template "helm-guestbook.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    {{- include .Values.route.labels | toYaml | nindent 4 }}
 spec:
   host: {{ .Values.route.host }}.{{ .Values.route.ingressDomain }}
   to:
