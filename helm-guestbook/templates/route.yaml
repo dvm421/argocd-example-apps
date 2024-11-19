@@ -8,7 +8,9 @@ metadata:
     chart: {{ template "helm-guestbook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    {{- include .Values.route.labels | toYaml | nindent 4 }}
+    {{- with .Values.route.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   host: {{ .Values.route.host }}.{{ .Values.route.ingressDomain }}
   to:
