@@ -15,6 +15,11 @@ service:
   type: ClusterIP
   port: 80
 
+route:
+  enabled: false
+  ingressDomain: example.local
+  host: guestbook
+
 ingress:
   enabled: false
   annotations: {}
